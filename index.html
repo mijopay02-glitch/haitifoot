@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violette AC - Site Officiel | Prototype par MIJO</title>
+    <!-- Police professionnelle -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* === VARIABLES DE COULEURS (Facile à changer pour un autre club) === */
+        :root {
+            --primary-color: #0033A0; /* Bleu Violette AC */
+            --secondary-color: #FFFFFF; /* Blanc */
+            --accent-color: #FFD700; /* Or / Doré */
+            --text-dark: #333333;
+            --bg-light: #F4F4F4;
+        }
+
+        /* === STYLES DE BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body { background-color: var(--bg-light); color: var(--text-dark); }
+        a { text-decoration: none; color: inherit; }
+
+        /* === NAVIGATION === */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo-nav { font-size: 24px; font-weight: 900; color: var(--secondary-color); }
+        .logo-nav span { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-color); }
+        .btn-fan {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* === HERO SECTION (La grande image) === */
+        .hero {
+            /* Remplace l'URL par une vraie photo de l'équipe plus tard */
+            background: linear-gradient(rgba(0, 51, 160, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518605368461-1e1252270117?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--secondary-color);
+            padding: 20px;
+        }
+        .hero h1 { font-size: 60px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .hero p { font-size: 20px; margin-bottom: 30px; }
+        .btn-hero {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-hero:hover { background-color: var(--accent-color); color: var(--primary-color); }
+
+        /* === TABLEAU DES SCORES === */
+        .scoreboard {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            background-color: var(--secondary-color);
+            margin-top: -50px; /* Fait remonter le bloc sur l'image */
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .match-card { text-align: center; flex: 1; }
+        .match-card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 16px; }
+        .teams { display: flex; justify-content: center; align-items: center; gap: 20px; font-size: 24px; font-weight: bold; }
+        .score { background-color: var(--primary-color); color: var(--secondary-color); padding: 10px 20px; border-radius: 5px; font-size: 28px; }
+        .vs { color: gray; font-size: 18px; }
+
+        /* === ACTUALITÉS === */
+        .news-section { padding: 60px 50px; text-align: center; }
+        .news-section h2 { color: var(--primary-color); font-size: 36px; margin-bottom: 40px; }
+        .news-grid { display: flex; gap: 30px; justify-content: center; }
+        .news-card {
+            background: var(--secondary-color);
+            width: 30%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .news-img { height: 200px; background-color: #ddd; }
+        .news-content { padding: 20px; }
+        .news-content h4 { color: var(--primary-color); margin-bottom: 10px; }
+        .news-content a { color: var(--accent-color); font-weight: bold; }
+
+        /* === SPONSORS (Argument de vente) === */
+        .sponsors {
+            background-color: var(--primary-color);
+            padding: 40px 50px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        .sponsors h3 { margin-bottom: 20px; text-transform: uppercase; }
+        .sponsor-logos { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+        .logo-box {
+            width: 150px; height: 80px;
+            background-color: rgba(255,255,255,0.2);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; border: 1px dashed var(--secondary-color);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        footer span { color: var(--accent-color); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo-nav">VIOLETTE <span>AC</span></div>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#">Équipe</a>
+            <a href="#">Histoire</a>
+            <a href="#">Calendrier</a>
+        </div>
+        <a href="#" class="btn-fan">Devenir Membre</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <h1>Le Vieux Tigre</h1>
+        <p>L'Histoire, La Fierté, Le Football Haïtien depuis 1918.</p>
+        <a href="#" class="btn-hero">Acheter des billets</a>
+    </header>
+
+    <!-- SCOREBOARD -->
+    <section class="scoreboard">
+        <div class="match-card">
+            <h3>DERNIER RÉSULTAT</h3>
+            <div class="teams">
+                <div>VAC</div>
+                <div class="score">2 - 0</div>
+                <div>FICA</div>
+            </div>
+            <p style="margin-top: 10px; font-size: 14px; color: gray;">Stade Sylvio Cator</p>
+        </div>
+        <div class="match-card">
+            <h3>PROCHAIN MATCH</h3>
+            <div class="teams">
+                <div>VAC</div>
+                <div class="vs">VS</div>
+                <div>BALTIMORE</div>
+            </div>
+            <p style="margin-top: 10px; font-size: 14px; color: gray;">Dimanche 15h00</p>
+        </div>
+    </section>
+
+    <!-- ACTUALITÉS -->
+    <section class="news-section">
+        <h2>Dernières Actualités</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-img" style="background: url('https://images.unsplash.com/photo-1574629810360-7efbb1925846?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60') center/cover;"></div>
+                <div class="news-content">
+                    <h4>Préparation de la nouvelle saison</h4>
+                    <p style="margin-bottom: 15px; font-size: 14px;">L'équipe première reprend le chemin de l'entraînement avec de grandes ambitions pour septembre.</p>
+                    <a href="#">Lire l'article →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img" style="background: url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60') center/cover;"></div>
+                <div class="news-content">
+                    <h4>Nouveau Maillot 2026</h4>
+                    <p style="margin-bottom: 15px; font-size: 14px;">Découvrez la nouvelle armure du Vieux Tigre, bientôt disponible dans notre boutique officielle.</p>
+                    <a href="#">Voir les photos →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img" style="background: url('https://images.unsplash.com/photo-1551280857-2b9bbe5260fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60') center/cover;"></div>
+                <div class="news-content">
+                    <h4>Partenariat Officiel</h4>
+                    <p style="margin-bottom: 15px; font-size: 14px;">Le Violette AC est fier d'annoncer la modernisation de ses infrastructures numériques.</p>
+                    <a href="#">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS (Espaces à vendre) -->
+    <section class="sponsors">
+        <h3>Nos Partenaires Officiels</h3>
+        <p style="margin-bottom: 30px;">Associez votre marque au club le plus titré.</p>
+        <div class="sponsor-logos">
+            <div class="logo-box">ESPACE SPONSOR</div>
+            <div class="logo-box">ESPACE SPONSOR</div>
+            <div class="logo-box">VOTRE LOGO ICI</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Violette Athletic Club. Tous droits réservés.</p>
+        <p style="margin-top: 10px; font-size: 12px;">Propulsé avec fierté par <span>MIJO Technology</span></p>
+    </footer>
+
+</body>
+</html>
