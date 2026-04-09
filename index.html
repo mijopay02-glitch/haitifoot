@@ -119,41 +119,44 @@
         /* === SPONSORS (Argument de vente) === */
         /* === SECTION SPONSORS === */
 /* === SECTION SPONSORS REVISITÉE === */
+/* === SECTION SPONSORS (FORCE ALIGNEMENT) === */
 .sponsors {
-    display: flex;
+    display: flex !important;      /* Force le mode Flexbox */
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center; /* ALIGNEMENT VERTICAL CENTRAL */
-    gap: 40px;           /* Espace entre les logos */
-    padding: 50px;
+    align-items: center;           /* Aligne les blocs sur une ligne centrale */
+    align-content: center;         /* Aligne les lignes entre elles si multi-ligne */
+    gap: 40px;
+    padding: 60px 20px;
     background-color: var(--secondary-color);
-    flex-wrap: wrap;     /* Pour que ça passe sur plusieurs lignes sur mobile */
 }
 
 .sponsor-item {
-    width: 150px;        /* Largeur identique pour chaque emplacement */
-    height: 100px;       /* Hauteur identique pour chaque emplacement */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centre l'image dans son carré de 150x100 */
+    width: 160px;
+    height: 100px;
+    display: flex !important;
+    justify-content: center;       /* Centre horizontalement l'image */
+    align-items: center;           /* Centre verticalement l'image */
+    overflow: hidden;              /* Sécurité pour ne pas déborder */
 }
 
 .sponsor-item img {
-    max-width: 100%;     /* L'image ne dépasse pas en largeur */
-    max-height: 100%;    /* L'image ne dépasse pas en hauteur */
-    height: auto;
-    width: auto;
-    object-fit: contain; /* Garde les proportions sans déformer */
-    filter: grayscale(100%); /* Optionnel : look pro en noir et blanc */
-    opacity: 0.7;
-    transition: 0.3s ease;
+    max-width: 100%;               /* Largeur max = le bloc de 160px */
+    max-height: 100%;              /* Hauteur max = le bloc de 100px */
+    width: auto;                   /* Garde le ratio */
+    height: auto;                  /* Garde le ratio */
+    object-fit: contain;           /* Évite la déformation */
+    display: block;                /* Supprime l'espace sous l'image */
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
 }
 
 .sponsor-item img:hover {
     filter: grayscale(0%);
     opacity: 1;
-    transform: scale(1.1); /* Petit effet de zoom au survol */
+    transform: scale(1.05);
 }
-
         /* === FOOTER === */
         footer {
             background-color: #111;
