@@ -117,20 +117,40 @@
         .news-content a { color: var(--accent-color); font-weight: bold; }
 
         /* === SPONSORS (Argument de vente) === */
-        .sponsors {
-            background-color: var(--primary-color);
-            padding: 40px 50px;
-            text-align: center;
-            color: var(--secondary-color);
-        }
-        .sponsors h3 { margin-bottom: 20px; text-transform: uppercase; }
-        .sponsor-logos { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
-        .logo-box {
-            width: 150px; height: 80px;
-            background-color: rgba(255,255,255,0.2);
-            display: flex; justify-content: center; align-items: center;
-            font-weight: bold; border: 1px dashed var(--secondary-color);
-        }
+        /* === SECTION SPONSORS === */
+.sponsors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espace entre les logos */
+    padding: 40px;
+    background: white;
+    flex-wrap: wrap;
+}
+
+.sponsor-item {
+    width: 150px;  /* Largeur fixe pour tous les conteneurs */
+    height: 80px;  /* Hauteur fixe pour tous les conteneurs */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsor-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Garde les proportions sans déformer */
+    filter: grayscale(100%); /* Optionnel : logos en gris pour plus de classe */
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.sponsor-item img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
 
         /* === FOOTER === */
         footer {
