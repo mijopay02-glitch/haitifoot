@@ -118,38 +118,40 @@
 
         /* === SPONSORS (Argument de vente) === */
         /* === SECTION SPONSORS === */
+/* === SECTION SPONSORS REVISITÉE === */
 .sponsors {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 30px; /* Espace entre les logos */
-    padding: 40px;
-    background: white;
-    flex-wrap: wrap;
+    align-items: center; /* ALIGNEMENT VERTICAL CENTRAL */
+    gap: 40px;           /* Espace entre les logos */
+    padding: 50px;
+    background-color: var(--secondary-color);
+    flex-wrap: wrap;     /* Pour que ça passe sur plusieurs lignes sur mobile */
 }
 
 .sponsor-item {
-    width: 150px;  /* Largeur fixe pour tous les conteneurs */
-    height: 80px;  /* Hauteur fixe pour tous les conteneurs */
+    width: 150px;        /* Largeur identique pour chaque emplacement */
+    height: 100px;       /* Hauteur identique pour chaque emplacement */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Centre l'image dans son carré de 150x100 */
 }
 
 .sponsor-item img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
+    max-width: 100%;     /* L'image ne dépasse pas en largeur */
+    max-height: 100%;    /* L'image ne dépasse pas en hauteur */
     height: auto;
+    width: auto;
     object-fit: contain; /* Garde les proportions sans déformer */
-    filter: grayscale(100%); /* Optionnel : logos en gris pour plus de classe */
+    filter: grayscale(100%); /* Optionnel : look pro en noir et blanc */
     opacity: 0.7;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .sponsor-item img:hover {
     filter: grayscale(0%);
     opacity: 1;
+    transform: scale(1.1); /* Petit effet de zoom au survol */
 }
 
         /* === FOOTER === */
